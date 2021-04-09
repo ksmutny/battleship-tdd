@@ -1,5 +1,11 @@
-import * as readline from 'readline-sync'
+import { BattleField, cols, position, Ship } from './model'
+import { drawBattleField, drawBattleFieldHeader } from './ui'
 
-console.log('here we go')
-const answer = readline.question('Hello? ')
-console.log(answer)
+
+const bf = new BattleField(10, 10, [
+    new Ship(position(cols.B, 2), 5, 'v'),
+    new Ship(position(cols.D, 4), 4, 'h')
+])
+
+console.log(drawBattleFieldHeader(bf.cols))
+drawBattleField(bf).forEach(line => console.log(line))
